@@ -15,7 +15,8 @@ public class MainClass {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        IDEFrame form1=new IDEFrame();
+        form1.setVisible(true);
     }
     
 }
