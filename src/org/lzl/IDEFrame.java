@@ -54,7 +54,7 @@ public class IDEFrame extends javax.swing.JFrame {
                     jLabel3.setText(tmp2);
                 }
             }).start();
-            jEditorPane1.getDocument();
+            jEditorPane1.getEditorKit();
             /**
              * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
              */
