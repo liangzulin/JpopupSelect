@@ -27,7 +27,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jScrollPane2" max="32767" attributes="0"/>
-                  <Component id="jSplitPane3" alignment="1" pref="341" max="32767" attributes="0"/>
+                  <Component id="jSplitPane3" alignment="1" pref="556" max="32767" attributes="0"/>
                   <Component id="jSplitPane5" alignment="0" max="32767" attributes="0"/>
                   <Component id="jSplitPane4" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
@@ -113,6 +113,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x8f93;&#x5165;&#x6587;&#x4ef6;1"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>
+          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout$JSplitPaneConstraintsDescription">
               <JSplitPaneConstraints position="right"/>
@@ -142,6 +145,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x8f93;&#x5165;&#x6587;&#x4ef6;2"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton5ActionPerformed"/>
+          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout$JSplitPaneConstraintsDescription">
               <JSplitPaneConstraints position="right"/>

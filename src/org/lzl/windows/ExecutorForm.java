@@ -47,7 +47,7 @@ public class ExecutorForm extends javax.swing.JFrame {
         };
         this.jScrollPane2.setViewportView(jTextPane);
         FileSystemView fsv = FileSystemView.getFileSystemView();
-        File f = new File("."); 
+        File f = new File(".");
         chooser.setCurrentDirectory(f);
         o = new OutputerJTextPane(jTextPane);
     }
@@ -108,6 +108,11 @@ public class ExecutorForm extends javax.swing.JFrame {
         jSplitPane4.setLeftComponent(jTextField4);
 
         jButton4.setText("输入文件1");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         jSplitPane4.setRightComponent(jButton4);
 
         jSplitPane5.setResizeWeight(1.0);
@@ -120,6 +125,11 @@ public class ExecutorForm extends javax.swing.JFrame {
         jSplitPane5.setLeftComponent(jTextField5);
 
         jButton5.setText("输入文件2");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
         jSplitPane5.setRightComponent(jButton5);
 
         jButton6.setText("运行/Run");
@@ -137,7 +147,7 @@ public class ExecutorForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2)
-                    .addComponent(jSplitPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 341, Short.MAX_VALUE)
+                    .addComponent(jSplitPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 556, Short.MAX_VALUE)
                     .addComponent(jSplitPane5)
                     .addComponent(jSplitPane4)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -188,11 +198,36 @@ public class ExecutorForm extends javax.swing.JFrame {
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         CMDrun crun=new CMDrun(o);
         try {
-            crun.startEXE(this.jTextField3.getText());
+            String cmd = this.jTextField3.getText();
+            if(jTextField4!=null && !jTextField4.getText().isEmpty()){
+                cmd+= (" "+jTextField4.getText());
+            }
+            if(jTextField5!=null && !jTextField5.getText().isEmpty()){
+                cmd+= (" "+jTextField5.getText());
+            }
+            crun.startEXE(cmd);
         } catch (IOException | InterruptedException ex) {
             Logger.getLogger(ExecutorForm.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        String filepath;
+        int result = chooser.showOpenDialog(null);
+        if (result == JFileChooser.APPROVE_OPTION) {
+            filepath = chooser.getSelectedFile().getPath();
+            this.jTextField4.setText(filepath);
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        String filepath;
+        int result = chooser.showOpenDialog(null);
+        if (result == JFileChooser.APPROVE_OPTION) {
+            filepath = chooser.getSelectedFile().getPath();
+            this.jTextField5.setText(filepath);
+        }
+    }//GEN-LAST:event_jButton5ActionPerformed
 
 
 
