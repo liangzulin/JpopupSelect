@@ -19,7 +19,7 @@ public class WordProcess {
          * wfioj waoiejfioawejoifjlasdjfnawjkefajwfoi 
          * awef jawoiejf iowaejf ooija 
          */
-        return str.replaceAll("\n", "<br>");
+        return str.replaceAll("\n", ENTER);
         /**
          * fajwieojfio aweoifjio 
          * awoiejfio awioefji oawjefoi jawioefj 

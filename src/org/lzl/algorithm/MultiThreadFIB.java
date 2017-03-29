@@ -104,7 +104,7 @@ public class MultiThreadFIB {
                 Callable xC = new FIBMultiClass(n-1);
                 Future xf = pool.submit(xC);
                 long x;
-                long y = FIB(n - 2);
+                long y = FIBtail2(n - 2,0,1);
                 x=(long)xf.get();
                 return x + y;
             }

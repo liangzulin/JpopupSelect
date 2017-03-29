@@ -30,8 +30,9 @@ public class MultiThreadFIBTest {
     @Test
     public void testFIB() {
         System.out.println("FIB");
-        long n = 50;
-        long expResult = 12586269025l;
+        long n = 24;
+        long expResult = 12586269025l;//when 50
+        expResult = 46368l;//when 24
         long result = MultiThreadFIB.FIB(n);
         System.out.println(result);
         assertEquals(expResult, result);
@@ -39,17 +40,18 @@ public class MultiThreadFIBTest {
 
     @Test
     public void testFIB2() {
-//        System.out.println("FIB2");
-//        long n = 23;
-//        long expResult = 12586269025l;
-//        long result = 0;
-//        try {
-//            result = MultiThreadFIB.FIBmulti(n);
-//        } catch (Exception ex) {
-//            Logger.getLogger(MultiThreadFIBTest.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        System.out.println(result);
-//        assertEquals(expResult, result);
+        System.out.println("FIB2_Multi");
+        long n = 24;
+        long expResult = 12586269025l;//when 50
+        expResult = 46368l;//when 24
+        long result = 0;
+        try {
+            result = MultiThreadFIB.FIBmulti(n);
+        } catch (Exception ex) {
+            Logger.getLogger(MultiThreadFIBTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println(result);
+        assertEquals(expResult, result);
 //        // TODO review the generated test code and remove the default call to fail.
 //        fail("The test case is a prototype.");
     }
@@ -57,9 +59,10 @@ public class MultiThreadFIBTest {
     
         @Test
     public void testFIB3() {
-        System.out.println("FIB3");
-        long n = 50;
-        long expResult = 12586269025l;
+        System.out.println("FIB3_tail");
+        long n = 24;
+        long expResult = 12586269025l;//when 50
+        expResult = 46368l;//when 24
         long result = MultiThreadFIB.FIBtail2(n,0,1);
         System.out.println(result);
         

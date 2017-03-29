@@ -6,13 +6,19 @@
 package org.lzl.windows;
 
 import java.awt.Dimension;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JTextPane;
 import javax.swing.filechooser.FileSystemView;
+import javax.swing.text.Document;
+import org.lzl.IDEFrame;
+import static org.lzl.WordProcess.linuxToSysEnter;
 import org.lzl.consoletool.CMDrun;
 import org.lzl.consoletool.OutputerJTextPane;
 
@@ -24,12 +30,15 @@ public class ExecutorForm extends javax.swing.JFrame {
     private static final long serialVersionUID = 21545431L;
     private final JFileChooser chooser = new JFileChooser();
     private final OutputerJTextPane o;
+    private JTextPane jTextPane;
+    
     /**
      * Creates new form ExecutorForm
      */
     public ExecutorForm() {
         initComponents();
-        JTextPane jTextPane = new JTextPane() {
+        
+        jTextPane = new JTextPane() {
             private static final long serialVersionUID = 126345341L;
             @Override
             public boolean getScrollableTracksViewportWidth() {
@@ -41,7 +50,7 @@ public class ExecutorForm extends javax.swing.JFrame {
                 if (d.width < getParent().getSize().width) {
                     d.width = getParent().getSize().width;
                 }
-                d.width += 100;
+                d.width += 10;
                 super.setSize(d);
             }
         };
@@ -76,6 +85,7 @@ public class ExecutorForm extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -139,6 +149,13 @@ public class ExecutorForm extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("打开Txt/ Open");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -152,6 +169,8 @@ public class ExecutorForm extends javax.swing.JFrame {
                     .addComponent(jSplitPane4)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -167,7 +186,9 @@ public class ExecutorForm extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton6)
+                    .addComponent(jButton1))
                 .addGap(5, 5, 5))
         );
 
@@ -229,9 +250,45 @@ public class ExecutorForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        /**
+         * 点击Open按钮后，打开一个文本文件，并显示在JEditorPane中
+         */
+        String name1;
+        int result = chooser.showOpenDialog(null);
+        if (result == JFileChooser.APPROVE_OPTION) {
+            name1 = chooser.getSelectedFile().getPath();
+//            try {
+//                jEditorPane1.setPage(name1);
+            BufferedReader br = null;
+            try {
+                br = new BufferedReader(new FileReader(name1));
+                String str="";
+                StringBuilder sb=new StringBuilder();
+                while((str=br.readLine())!=null){
+                }
+                String filestr = sb.toString();
+                this.jTextPane.setContentType("charset=utf-8");
+                this.jTextPane.setText(linuxToSysEnter(filestr));
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(IDEFrame.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(IDEFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }finally{
+                
+                try {
+                    br.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(IDEFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;

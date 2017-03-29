@@ -71,9 +71,9 @@ public class CMDrun {
 //        }
         
         if (result == 0) {
-            out.println(" SUCCESS! ");
+            out.println("SUCCESS! Return "+result);
         } else {
-            out.println(" FAILED! ");
+            out.println("FAILED! Return "+result);
         }
     }
 }

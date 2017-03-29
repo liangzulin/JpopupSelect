@@ -42,9 +42,9 @@ public class ConsoleSimulator implements Runnable {
             String[] sline = buffer.toString().split("\n");
             for(String s:sline){
                 if (type == INFO) {
-                    out.print("info > " + s);
+                    out.print("info >" + s);
                 }else {
-                    out.print("error> " + s);
+                    out.print("error>" + s);
                 }
             }
         } catch (IOException ex) {

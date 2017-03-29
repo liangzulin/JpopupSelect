@@ -157,7 +157,7 @@ public class IDEFrame extends javax.swing.JFrame {
                 String str="";
                 StringBuilder sb=new StringBuilder();
                 while((str=br.readLine())!=null){
-                    sb.append(str);
+                    sb.append(str);//.append("\n");
                 }
                 String filestr = sb.toString();
                 this.jEditorPane1.setContentType("charset=utf-8");
