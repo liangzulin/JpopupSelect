@@ -266,6 +266,7 @@ public class ExecutorForm extends javax.swing.JFrame {
                 String str="";
                 StringBuilder sb=new StringBuilder();
                 while((str=br.readLine())!=null){
+                    sb.append(str).append("\n");
                 }
                 String filestr = sb.toString();
                 this.jTextPane.setContentType("charset=utf-8");
