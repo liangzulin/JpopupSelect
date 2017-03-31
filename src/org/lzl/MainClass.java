@@ -14,6 +14,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import org.lzl.algorithm.MultiThreadFIB;
 import org.lzl.windows.ExecutorForm;
+import others.EditorDemo;
 
 /**
  *
@@ -36,15 +37,18 @@ public class MainClass {
 //        }
 //        System.out.println(result);
         
-//        IDEFrame form1=new IDEFrame();
-//        form1.setVisible(true);
+        
         
         SwingUtilities.invokeLater(() -> {
             try {
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (Exception e) {e.printStackTrace();}
+                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            } catch (Exception e) {e.printStackTrace();}
             ExecutorForm e = new ExecutorForm();
-            e.setVisible(true);
+            IDEFrame form1=new IDEFrame();
+            EditorDemo ed=new EditorDemo();
+            form1.setVisible(true);
+            ed.setVisible(true);
+//            e.setVisible(true);
         });
     }
     

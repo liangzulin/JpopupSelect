@@ -5,13 +5,16 @@
  */
 package org.lzl;
 
+import java.awt.Dimension;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JEditorPane;
 import javax.swing.JFileChooser;
+import javax.swing.JTextPane;
 import javax.swing.event.CaretEvent;
 import javax.swing.text.Document;
 import static org.lzl.WordProcess.linuxToSysEnter;
@@ -24,12 +27,36 @@ public class IDEFrame extends javax.swing.JFrame {
     private static final long serialVersionUID = 134557645L;
     private final JCodeCompletePopupMenu ccpm;
     private final JFileChooser chooser;
+    private final JEditorPane jEditorPane1;
     /**
      * Creates new form V_JFrame2
      */
     public IDEFrame() {
         initComponents();
         chooser = new JFileChooser();
+        
+        
+        jEditorPane1 = new JEditorPane() {
+            private static final long serialVersionUID = 126345341L;
+            @Override
+            public boolean getScrollableTracksViewportWidth() {
+                return false;
+            }
+
+            @Override
+            public void setSize(Dimension d) {
+                System.out.println("d.width=="+d.width+"; parent.width=="+getParent().getSize().width);
+                if (d.width < getParent().getSize().width) {
+                    d.width = getParent().getSize().width;
+                }
+                
+//                d.width += 50;
+                super.setSize(d);
+            }
+        };
+        this.jScrollPane2.setViewportView(this.jEditorPane1);
+        
+        
         ccpm=new JCodeCompletePopupMenu(this.jEditorPane1);
         this.jEditorPane1.addCaretListener((CaretEvent ce) -> {
             
@@ -59,10 +86,11 @@ public class IDEFrame extends javax.swing.JFrame {
              * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
              */
             this.jLabel2.setText("Dot:"+ce.getDot()+" Mark:"+ce.getMark());
-            
         });
-        
     }
+    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -73,17 +101,14 @@ public class IDEFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jEditorPane1 = new javax.swing.JEditorPane();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jScrollPane1.setViewportView(jEditorPane1);
 
         jButton1.setText("jButton1");
 
@@ -107,7 +132,7 @@ public class IDEFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane2)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -125,10 +150,10 @@ public class IDEFrame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -190,10 +215,9 @@ public class IDEFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JEditorPane jEditorPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }
