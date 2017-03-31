@@ -58,6 +58,7 @@ public class ExecutorForm extends javax.swing.JFrame {
         FileSystemView fsv = FileSystemView.getFileSystemView();
         File f = new File(".");
         chooser.setCurrentDirectory(f);
+        chooser.setFileFilter(new PictureFileFilter("exe", "Executive File (*.exe)"));
         o = new OutputerJTextPane(jTextPane);
     }
 

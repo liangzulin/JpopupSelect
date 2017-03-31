@@ -8,10 +8,12 @@
  */
 package org.lzl;
 
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import org.lzl.algorithm.MultiThreadFIB;
 import org.lzl.windows.ExecutorForm;
 import others.EditorDemo;
@@ -38,17 +40,32 @@ public class MainClass {
 //        System.out.println(result);
         
         
+//        double x=2.1;
+//        double y=7.8;
+        double[] x1={2.1, 3.4, 7.8, 10.3};
+        double n=10.0;
+        double range=16.0;
+        for(n=-range;n<=range;n+=2.0){
+            double tmp=0.0;
+            for(double xn:x1){
+                tmp+=Math.pow(xn,n);
+            }
+            double result=Math.pow(tmp, 1.0/n);
+            System.out.print(Arrays.toString(x1));
+            System.out.printf("; n=%.2f; result is %.8f\n",n,result);
+        }
+        
         
         SwingUtilities.invokeLater(() -> {
             try {
                 UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-            } catch (Exception e) {e.printStackTrace();}
+            } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {e.printStackTrace();}
             ExecutorForm e = new ExecutorForm();
             IDEFrame form1=new IDEFrame();
             EditorDemo ed=new EditorDemo();
             form1.setVisible(true);
             ed.setVisible(true);
-//            e.setVisible(true);
+            e.setVisible(true);
         });
     }
     
