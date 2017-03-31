@@ -4,20 +4,10 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/D:/!文档/doc/GitHub/JpopupSelect/src/org/lzl/windows/ExecutorForm.java</file>
-            <file>file:/D:/!文档/doc/GitHub/JpopupSelect/src/org/lzl/IDEFrame.java</file>
+            <file>file:/D:/!文档/doc/GitHub/JpopupSelect/src/org/lzl/windows/PictureFileFilter.java</file>
             <file>file:/D:/!文档/doc/GitHub/JpopupSelect/src/org/lzl/windows/TestPane.java</file>
             <file>file:/D:/!文档/doc/GitHub/JpopupSelect/src/org/lzl/windows/JDAStyledDocument.java</file>
-            <file>file:/D:/!文档/doc/GitHub/JpopupSelect/src/org/lzl/MainClass.java</file>
-            <file>file:/D:/!文档/doc/GitHub/JpopupSelect/src/org/lzl/consoletool/Outputers.java</file>
-            <file>file:/D:/!文档/doc/GitHub/JpopupSelect/src/org/lzl/consoletool/CMDrun.java</file>
-            <file>file:/D:/!文档/doc/GitHub/JpopupSelect/src/others/EditorDemo.java</file>
-            <file>file:/D:/!文档/doc/GitHub/JpopupSelect/src/org/lzl/consoletool/ConsoleSimulator.java</file>
-            <file>file:/D:/!文档/doc/GitHub/JpopupSelect/src/org/lzl/consoletool/OutputerJTextPane.java</file>
-            <file>file:/D:/!文档/doc/GitHub/JpopupSelect/src/others/JFontChooser.java</file>
-            <file>file:/D:/!文档/doc/GitHub/JpopupSelect/src/others/MyFont.java</file>
-            <file>file:/D:/!文档/doc/GitHub/JpopupSelect/src/others/DecorateKeyWords.java</file>
-            <file>file:/D:/!文档/doc/GitHub/JpopupSelect/src/others/WordNode.java</file>
-            <file>file:/D:/!文档/doc/GitHub/JpopupSelect/src/org/lzl/WordProcess.java</file>
+            <file>file:/D:/!文档/doc/GitHub/JpopupSelect/src/org/lzl/windows/ExampleFileFilter.java</file>
         </group>
     </open-files>
 </project-private>
