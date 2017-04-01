@@ -9,14 +9,12 @@
 package org.lzl;
 
 import java.util.Arrays;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-import org.lzl.algorithm.MultiThreadFIB;
 import org.lzl.windows.ExecutorForm;
 import others.EditorDemo;
+import others.JTextPane2;
 
 /**
  *
@@ -66,6 +64,7 @@ public class MainClass {
             form1.setVisible(true);
             ed.setVisible(true);
             e.setVisible(true);
+            JTextPane2.main2();
         });
     }
     

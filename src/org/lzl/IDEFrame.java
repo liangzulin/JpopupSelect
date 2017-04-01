@@ -6,6 +6,7 @@
 package org.lzl;
 
 import java.awt.Dimension;
+import java.awt.Font;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -24,42 +25,45 @@ import static org.lzl.WordProcess.linuxToSysEnter;
  * @author liangzl2
  */
 public class IDEFrame extends javax.swing.JFrame {
+
     private static final long serialVersionUID = 134557645L;
     private final JCodeCompletePopupMenu ccpm;
     private final JFileChooser chooser;
     private final JEditorPane jEditorPane1;
+
     /**
      * Creates new form V_JFrame2
      */
     public IDEFrame() {
         initComponents();
         chooser = new JFileChooser();
-        
-        
+
         jEditorPane1 = new JEditorPane() {
             private static final long serialVersionUID = 126345341L;
-            @Override
-            public boolean getScrollableTracksViewportWidth() {
-                return false;
-            }
-
-            @Override
-            public void setSize(Dimension d) {
-                System.out.println("d.width=="+d.width+"; parent.width=="+getParent().getSize().width);
-                if (d.width < getParent().getSize().width) {
-                    d.width = getParent().getSize().width;
-                }
-                
-//                d.width += 50;
-                super.setSize(d);
-            }
+//            @Override
+//            public boolean getScrollableTracksViewportWidth() {
+//                return false;
+//            }
+//
+//            @Override
+//            public void setSize(Dimension d) {
+//                System.out.println("d.width=="+d.width+"; parent.width=="+getParent().getSize().width);
+//                if (d.width < getParent().getSize().width) {
+//                    d.width = getParent().getSize().width;
+//                }
+//                
+//                d.width += 2;
+//                super.setSize(d);
+//            }
         };
+//        Font font=new Font("Arial",Font.PLAIN,32);
+//        jEditorPane1.setFont(font);
+//        jEditorPane1.setContentType("text/rtf");
         this.jScrollPane2.setViewportView(this.jEditorPane1);
-        
-        
-        ccpm=new JCodeCompletePopupMenu(this.jEditorPane1);
+
+        ccpm = new JCodeCompletePopupMenu(this.jEditorPane1);
         this.jEditorPane1.addCaretListener((CaretEvent ce) -> {
-            
+
             new Thread(() -> {
 //                try {
 //                    wait(16);
@@ -71,11 +75,11 @@ public class IDEFrame extends javax.swing.JFrame {
                     jLabel1.setText(tmp);
                 }
                 String tmp2 = null;
-                try{
-                    
-                    tmp2= jEditorPane1.getCaret().getMagicCaretPosition().toString();
-                }catch(java.lang.NullPointerException e){
-                    
+                try {
+
+                    tmp2 = jEditorPane1.getCaret().getMagicCaretPosition().toString();
+                } catch (java.lang.NullPointerException e) {
+
                 }
                 if (tmp2 != null) {
                     jLabel3.setText(tmp2);
@@ -85,12 +89,9 @@ public class IDEFrame extends javax.swing.JFrame {
             /**
              * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
              */
-            this.jLabel2.setText("Dot:"+ce.getDot()+" Mark:"+ce.getMark());
+            this.jLabel2.setText("Dot:" + ce.getDot() + " Mark:" + ce.getMark());
         });
     }
-    
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -176,38 +177,48 @@ public class IDEFrame extends javax.swing.JFrame {
             name1 = chooser.getSelectedFile().getPath();
 //            try {
 //                jEditorPane1.setPage(name1);
-            BufferedReader br = null;
-            try {
-                br = new BufferedReader(new FileReader(name1));
-                String str="";
-                StringBuilder sb=new StringBuilder();
-                while((str=br.readLine())!=null){
-                    sb.append(str).append("\n");
-                }
-                String filestr = sb.toString();
-                this.jEditorPane1.setContentType("charset=utf-8");
-                this.jEditorPane1.setText(linuxToSysEnter(filestr));
-//                ;
-                
-            } catch (FileNotFoundException ex) {
-                Logger.getLogger(IDEFrame.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IOException ex) {
-                Logger.getLogger(IDEFrame.class.getName()).log(Level.SEVERE, null, ex);
-            }finally{
-                
+            if (name1.substring(name1.length() - 3, name1.length()).equals("rtf")) {
                 try {
-                    br.close();
+                    jEditorPane1.setPage("file:"+name1);
+                    
+//                    jEditorPane1.setPage("http://www.baidu.com");
+                    
                 } catch (IOException ex) {
                     Logger.getLogger(IDEFrame.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            }
-            
-            Document d = this.jEditorPane1.getDocument();
+            } else {
+                BufferedReader br = null;
+                try {
+                    br = new BufferedReader(new FileReader(name1));
+                    String str = "";
+                    StringBuilder sb = new StringBuilder();
+                    while ((str = br.readLine()) != null) {
+                        sb.append(str).append("\n");
+                    }
+                    String filestr = sb.toString();
+                    this.jEditorPane1.setContentType("charset=utf-8");
+                    this.jEditorPane1.setText(linuxToSysEnter(filestr));
+//                ;
+
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(IDEFrame.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
+                    Logger.getLogger(IDEFrame.class.getName()).log(Level.SEVERE, null, ex);
+                } finally {
+
+                    try {
+                        br.close();
+                    } catch (IOException ex) {
+                        Logger.getLogger(IDEFrame.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+
+                Document d = this.jEditorPane1.getDocument();
 //            } catch (IOException ex) {
 //                Logger.getLogger(IDEFrame.class.getName()).log(Level.SEVERE, null, ex);
 //            }
-            
-            
+            }
+
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 

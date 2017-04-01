@@ -5,7 +5,11 @@
  */
 package org.lzl.windows;
 
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -17,6 +21,9 @@ import javax.swing.JFileChooser;
 import javax.swing.JTextPane;
 import javax.swing.filechooser.FileSystemView;
 import javax.swing.text.Document;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyledDocument;
 import org.lzl.IDEFrame;
 import static org.lzl.WordProcess.linuxToSysEnter;
 import org.lzl.consoletool.CMDrun;
@@ -50,10 +57,46 @@ public class ExecutorForm extends javax.swing.JFrame {
                 if (d.width < getParent().getSize().width) {
                     d.width = getParent().getSize().width;
                 }
-                d.width += 10;
+                int length=jTextPane.getText().length();
+                if(length>4){
+                    StyledDocument sdoc = jTextPane.getStyledDocument();
+                    SimpleAttributeSet sas = new SimpleAttributeSet();
+                    
+                    Font font=new Font("Arial",Font.PLAIN,20);
+//                    keyWordAttr.addAttribute("hi", font);
+                    StyleConstants.setForeground(sas, Color.blue);
+                    StyleConstants.setFontFamily(sas, font.getFamily());
+                    StyleConstants.setFontSize(sas, font.getSize());
+                    sdoc.setCharacterAttributes(
+                            4,
+                            (length-4<6)?length-4:6,
+                            sas,
+                            true
+                    );
+                }
+                
+//                d.width += 1;
                 super.setSize(d);
+                
             }
         };
+        jTextPane.addComponentListener(new ComponentListener() {
+            @Override
+            public void componentResized(ComponentEvent ce) {
+                
+                jScrollPane2.getVerticalScrollBar().setValue(jScrollPane2.getVerticalScrollBar().getMaximum()/2);
+//                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+            @Override public void componentMoved(ComponentEvent ce) {
+//                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+            @Override public void componentShown(ComponentEvent ce) {
+//                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+            @Override public void componentHidden(ComponentEvent ce) {
+//                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        });
         this.jScrollPane2.setViewportView(jTextPane);
         FileSystemView fsv = FileSystemView.getFileSystemView();
         File f = new File(".");
@@ -215,6 +258,7 @@ public class ExecutorForm extends javax.swing.JFrame {
             filepath = chooser.getSelectedFile().getPath();
             this.jTextField3.setText(filepath);
         }
+//        jScrollPane2.getVerticalScrollBar().setValue(jScrollPane2.getVerticalScrollBar().getMaximum()/2);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -249,6 +293,7 @@ public class ExecutorForm extends javax.swing.JFrame {
             filepath = chooser.getSelectedFile().getPath();
             this.jTextField5.setText(filepath);
         }
+        
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
