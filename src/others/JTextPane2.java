@@ -28,6 +28,13 @@ public class JTextPane2 extends JFrame{
     /**
      * 若你想在JTextPane上置入图形或其他组件(如表格或按钮)，你可以分别使用JTextPane所提供的insetIcon()与insertComponent()
      * http://blog.csdn.net/dean_deng/article/details/6621458
+     * 本JTextPane更改自如下：
+     * http://blog.csdn.net/lishigui/article/details/2959094
+     * 其中运用了文件选择器：http://www.cnblogs.com/happyPawpaw/archive/2013/04/27/3046414.html
+     * Swing线程安全响应：http://blog.csdn.net/bruno231/article/details/42098277、 http://blog.sina.com.cn/s/blog_1660ab4300102xgpz.html
+     * JTextPane如何取消自动换行的问题：http://blog.csdn.net/ycb1689/article/details/52459599
+     * 运用文本编辑器对JTextPane进行关键词渲染：http://www.cnblogs.com/hujunzheng/p/5232125.html
+     * 
      */
     private static final long serialVersionUID = 1L;
     private JTextPane mypane;
@@ -104,6 +111,7 @@ public class JTextPane2 extends JFrame{
                             s="\\r\\n";
                         }
                         System.out.print("; str=="+s+"; i=="+i+"; ");
+                        //重点修改pane.getText().length()——>pane.getDocument().getLength()
                         pane.getStyledDocument().insertString(pane.getDocument().getLength(), s1, null);
 //                        pane.getStyledDocument()
                     } catch (BadLocationException e1) {
