@@ -13,8 +13,9 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import org.lzl.windows.ExecutorForm;
+import org.lzl.windows.ImageTextPaneForm;
 import others.EditorDemo;
-import others.JTextPane2;
+import others.JTextPaneImage;
 
 /**
  *
@@ -59,12 +60,14 @@ public class MainClass {
                 UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
             } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {e.printStackTrace();}
             ExecutorForm e = new ExecutorForm();
-            IDEFrame form1=new IDEFrame();
+            IDEFrame selfIDE=new IDEFrame();
             EditorDemo ed=new EditorDemo();
-            form1.setVisible(true);
+            selfIDE.setVisible(true);
             ed.setVisible(true);
             e.setVisible(true);
-            JTextPane2.main2();
+//            JTextPaneImage.main2();
+            ImageTextPaneForm itpf = new ImageTextPaneForm();
+            itpf.setVisible(true);
         });
     }
     
