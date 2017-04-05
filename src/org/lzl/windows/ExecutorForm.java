@@ -20,7 +20,6 @@ import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JTextPane;
 import javax.swing.filechooser.FileSystemView;
-import javax.swing.text.Document;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
@@ -63,7 +62,6 @@ public class ExecutorForm extends javax.swing.JFrame {
                     SimpleAttributeSet sas = new SimpleAttributeSet();
                     
                     Font font=new Font("Arial",Font.PLAIN,20);
-//                    keyWordAttr.addAttribute("hi", font);
                     StyleConstants.setForeground(sas, Color.blue);
                     StyleConstants.setFontFamily(sas, font.getFamily());
                     StyleConstants.setFontSize(sas, font.getSize());
@@ -131,7 +129,7 @@ public class ExecutorForm extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Executor");
 
         jSplitPane3.setResizeWeight(1.0);
         jSplitPane3.setToolTipText("");

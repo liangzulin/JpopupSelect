@@ -14,8 +14,8 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import org.lzl.windows.ExecutorForm;
 import org.lzl.windows.ImageTextPaneForm;
+import others.ComplexCellRenderer2;
 import others.EditorDemo;
-import others.JTextPaneImage;
 
 /**
  *
@@ -61,13 +61,14 @@ public class MainClass {
             } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {e.printStackTrace();}
             ExecutorForm e = new ExecutorForm();
             IDEFrame selfIDE=new IDEFrame();
-            EditorDemo ed=new EditorDemo();
-            selfIDE.setVisible(true);
-            ed.setVisible(true);
-            e.setVisible(true);
+//            EditorDemo ed=new EditorDemo();
+//            selfIDE.setVisible(true);
+//            ed.setVisible(true);
+//            e.setVisible(true);
 //            JTextPaneImage.main2();
             ImageTextPaneForm itpf = new ImageTextPaneForm();
             itpf.setVisible(true);
+            ComplexCellRenderer2.main2();
         });
     }
     

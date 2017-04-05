@@ -8,8 +8,10 @@ package org.lzl.windows;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.JTextPane;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Element;
@@ -64,5 +66,14 @@ public class ImageTextPaneController {
         });
         //===========End of sendButton
         
+    }
+    
+    
+    public static void setJComboBox(JComboBox jcb){
+        jcb.setRenderer(new ComboBoxRenderer());
+//        JPanel jp=new JPanel();
+//        jp.add(new JButton("hihihi!"));
+//        jcb.addItem(jp.getUI());
+//        jcb.addItem(new ImageIcon("C:\\Users\\liangzl2\\Desktop\\opencl-3.png"));
     }
 }
