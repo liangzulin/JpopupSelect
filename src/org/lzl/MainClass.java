@@ -14,6 +14,7 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import org.lzl.windows.ExecutorForm;
 import org.lzl.windows.ImageTextPaneForm;
+import org.lzl.windows.ThreeDForm;
 import others.ComplexCellRenderer2;
 import others.EditorDemo;
 
@@ -61,6 +62,9 @@ public class MainClass {
             } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {e.printStackTrace();}
             ExecutorForm e = new ExecutorForm();
             IDEFrame selfIDE=new IDEFrame();
+            ThreeDForm tdr=new ThreeDForm();
+            
+            tdr.setVisible(true);
 //            EditorDemo ed=new EditorDemo();
 //            selfIDE.setVisible(true);
 //            ed.setVisible(true);

@@ -14,6 +14,8 @@ public class ImageTextPaneForm extends javax.swing.JFrame {
 
     /**
      * Creates new form ImageTextPaneForm
+     * This form is used for validation of sending text and image to jTextPane
+     * 这个面板用于验证同时发送文字和图片到JTextPane的可能性
      */
     public ImageTextPaneForm() {
         initComponents();
