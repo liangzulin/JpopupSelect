@@ -21,23 +21,42 @@ public class CMDrun {
     private final int ERROR = 1;
     private final String decode;
     
+    /**
+     * Create a CMD runner, input the desire Outputers for output (System.out.print
+     * or JTextPanel, anyway you want), and point out which decode you want.for 
+     * example, the gb2312 for Chinese if you run CMD in Chinese Windows system
+     * @param out the Outputers, you should implement all abstract method
+     * @param decode the Text Encoding you want.
+     */
     public CMDrun(Outputers out, String decode){
         this.out = out;
         this.decode = decode;
     }
     
+    /**
+     * Create a CMD runner, input the desire Outputers for output (System.out.print
+     * or JTextPanel, anyway you want).This method use gb2312 for decoder.
+     * @param out the Outputers, you should implement all abstract method
+     */
     public CMDrun(Outputers out){
         this.out = out;
         this.decode = "gb2312";
     }
     
+    /**
+     * Run the terminal command like bash, shell or CMD.This method can run
+     * the program which is executable.The 
+     * @param command some command like "ls", "dir", ""
+     * @throws IOException
+     * @throws InterruptedException
+     */
     public void startEXE(String command) throws IOException, InterruptedException {
         // Process child = Runtime.getRuntime().exec("run.bat"); 
         // Process child = Runtime.getRuntime().exec(" java -classpath bin helloworld.Test ");
         
-        int result = 1;
+        int result;
 //        String command = "javac";
-        Process child = null;
+        Process child;
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String str = null;
 //        while(true){
@@ -57,7 +76,7 @@ public class CMDrun {
                 //child = Runtime.getRuntime().exec("cmd.exe dir");
             }
             OutputStream os = child.getOutputStream();
-            InputStream stdin = child.getInputStream(); //
+            InputStream stdin = child.getInputStream();
             InputStream stderr = child.getErrorStream();
             
             
