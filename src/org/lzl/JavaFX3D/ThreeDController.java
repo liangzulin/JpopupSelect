@@ -292,12 +292,12 @@ public class ThreeDController {
         
         Cube c;
         ArrayList<Cube> boxlist=new ArrayList<>();
-        for(int i=0;i<400;i++){
+        for(int i=0;i<2500;i++){
             Cube tmp=new Cube(50,Color.GREEN,1);
             
             boxlist.add(tmp);
-            int row=i/20;
-            int col=i%20;
+            int row=i/50;
+            int col=i%50;
             tmp.setTranslateX(50+col*50);
             tmp.setTranslateY(50+row*50);
             
@@ -374,7 +374,7 @@ public class ThreeDController {
 //                mv.getTransforms().add(new Rotate(degree, Rotate.X_AXIS));
 //                text.getTransforms().add(new Rotate(degree, Rotate.X_AXIS));
                 oldX = newX;
-                animation.play();
+                
             }
 
             // 取得滑鼠的垂直座標
