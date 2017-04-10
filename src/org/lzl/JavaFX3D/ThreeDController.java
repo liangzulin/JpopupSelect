@@ -8,8 +8,13 @@ package org.lzl.JavaFX3D;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.embed.swing.JFXPanel;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -24,6 +29,8 @@ import javafx.scene.shape.TriangleMesh;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.transform.Rotate;
+import javafx.util.Duration;
+import others.Cube;
 
 /**
  *
@@ -32,7 +39,7 @@ import javafx.scene.transform.Rotate;
 public class ThreeDController {
     public static double oldX=0.0;
     public static double oldY=0.0;
-    
+    public static Timeline animation;
     
     public static void JavaFXInit(){
         
@@ -187,7 +194,6 @@ public class ThreeDController {
         mv.setTranslateY(200);
         
         
-        
         TriangleMesh pyramidMesh = new TriangleMesh();
         /**
          * Unfortunately, you can’t simply leave out the texture 
@@ -281,10 +287,28 @@ public class ThreeDController {
         material2.setDiffuseMap(image);
         // 設定物體表面的材質
         box3.setMaterial(material2);
-        box3.setLayoutX(350);
+        box3.setLayoutX(400);
         box3.setLayoutY(300);
         
-        
+        Cube c;
+        ArrayList<Cube> boxlist=new ArrayList<>();
+        for(int i=0;i<400;i++){
+            Cube tmp=new Cube(50,Color.GREEN,1);
+            
+            boxlist.add(tmp);
+            int row=i/20;
+            int col=i%20;
+            tmp.setTranslateX(50+col*50);
+            tmp.setTranslateY(50+row*50);
+            
+//            Box tmp=new Box(100,100,100);
+//            tmp.setCullFace(CullFace.BACK);
+//            tmp.setDrawMode(DrawMode.FILL);
+//            tmp.setMaterial(material2);
+//            tmp.setLayoutX(100+100*col);
+//            tmp.setLayoutY(300+100*row);
+            
+        }
         
         
         
@@ -301,6 +325,39 @@ public class ThreeDController {
         root.getChildren().add(box3);
         
         
+        animation= new Timeline();
+        
+        boxlist.forEach((b)->{
+            root.getChildren().add(b);
+            
+//            animation.getKeyFrames().addAll(
+//                    new KeyFrame(Duration.ZERO,
+//                            new KeyValue(b.ry.angleProperty(), 0d),
+//                    ),
+//                    new KeyFrame(Duration.seconds(1),
+//                            new KeyValue(b.ry.angleProperty(), 360d),
+//                    ));
+            
+            animation.getKeyFrames().addAll(
+                new KeyFrame(Duration.ZERO,
+                        new KeyValue(b.ry.angleProperty(), 0d),
+                        new KeyValue(b.rx.angleProperty(), 0d),
+                        new KeyValue(b.rz.angleProperty(), 0d)
+                ),
+                new KeyFrame(Duration.seconds(1),
+                        new KeyValue(b.ry.angleProperty(), 360d),
+                        new KeyValue(b.rx.angleProperty(), 360d),
+                        new KeyValue(b.rz.angleProperty(), 360d)
+                ));
+            
+            
+        });
+        animation.play();
+        
+        
+        
+        
+        animation.setCycleCount(Animation.INDEFINITE);
         
         scene.setOnMouseMoved((javafx.scene.input.MouseEvent e)->{
             
@@ -309,14 +366,15 @@ public class ThreeDController {
             if (Math.abs(newX - oldX) > 5) {
                 // 水平旋轉
                 double degree=newX - oldX;
-                root.getChildren().forEach((c)->{
-                    c.getTransforms().add(new Rotate(degree, Rotate.X_AXIS));
-                });
+//                root.getChildren().forEach((c1)->{
+//                    c1.getTransforms().add(new Rotate(degree, Rotate.X_AXIS));
+//                });
 //                box.getTransforms()
 //                pyramid.getTransforms().add(new Rotate(degree, Rotate.X_AXIS));
 //                mv.getTransforms().add(new Rotate(degree, Rotate.X_AXIS));
 //                text.getTransforms().add(new Rotate(degree, Rotate.X_AXIS));
                 oldX = newX;
+                animation.play();
             }
 
             // 取得滑鼠的垂直座標
@@ -324,9 +382,9 @@ public class ThreeDController {
             if (Math.abs(newY - oldY) > 5) {
                 // 垂直旋轉
                 double degree=newY - oldY;
-                root.getChildren().forEach((c)->{
-                    c.getTransforms().add(new Rotate(degree, Rotate.Y_AXIS));
-                });
+//                root.getChildren().forEach((c1)->{
+//                    c1.getTransforms().add(new Rotate(degree, Rotate.Y_AXIS));
+//                });
 //                box.getTransforms().add(new Rotate(degree, Rotate.Y_AXIS));
 //                pyramid.getTransforms().add(new Rotate(degree, Rotate.Y_AXIS));
 //                mv.getTransforms().add(new Rotate(degree, Rotate.Y_AXIS));
