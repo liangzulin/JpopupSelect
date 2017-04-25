@@ -9,7 +9,7 @@ package org.lzl.windows;
  *
  * @author liangzl2
  */
-public class ImageTextPaneForm extends javax.swing.JFrame {
+public class ImageTextSenderForm extends javax.swing.JFrame {
     private static final long serialVersionUID = 1L;
 
     /**
@@ -17,7 +17,7 @@ public class ImageTextPaneForm extends javax.swing.JFrame {
      * This form is used for validation of sending text and image to jTextPane
      * 这个面板用于验证同时发送文字和图片到JTextPane的可能性
      */
-    public ImageTextPaneForm() {
+    public ImageTextSenderForm() {
         initComponents();
         ImageTextPaneController.add2(jTextPane2, jTextPane1, jButton2, jButton1, this);
         ImageTextPaneController.setJComboBox(jComboBox1);
